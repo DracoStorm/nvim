@@ -2,6 +2,7 @@
 -- plugins/telescope.lua:
 return {
 	'nvim-telescope/telescope.nvim', tag = '0.1.8',
+	config = function()
 	require('telescope').setup{
 	dependencies = { 'nvim-lua/plenary.nvim' },
 		defaults = {
@@ -19,6 +20,7 @@ return {
 			}
 		}
 	}
+end
 
 }
 
