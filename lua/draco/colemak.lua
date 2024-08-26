@@ -49,11 +49,6 @@ keymap.set('n', '<LEADER>tt', ':%s/    /\t/g')
 keymap.set('v', '<LEADER>tt', ':s/    /\t/g')
 
 -- Folding
-keymap.set('', '<LEADER>m', 'za')
-keymap.set('', '<LEADER>c', 'zc')
-
-keymap.set('', '<LEADER>M', 'zA')
-keymap.set('', '<LEADER>C', 'zC')
 
 -- insert a pair of {} and go to the next line
 keymap.set('i', '<c-y>', '<ESC>A {}<ESC>i<CR><ESC>ko')

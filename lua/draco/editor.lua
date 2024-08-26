@@ -14,7 +14,7 @@ vim.bo.tabstop = 3
 vim.bo.shiftwidth = 3
 vim.bo.softtabstop = 3
 
-vim.wo.foldmethod = 'indent'
+vim.wo.foldmethod = 'expr'
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.splitbelow = true

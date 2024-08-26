@@ -26,8 +26,9 @@ return {
 	require("luasnip.loaders.from_vscode").lazy_load()
 
 	cmp.setup({
+
 	  completion = {
-		completeopt = "menu,menuone,preview",
+		completeopt = "menu,menuone,preview,noselect",
 	  },
 	  snippet = { -- configure how nvim-cmp interacts with snippet engine
 		expand = function(args)
@@ -76,6 +77,7 @@ return {
 		{ name = "luasnip" }, -- snippets
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
+		{ name = 'nvim_lsp' }
 	  }),
 
 	  -- configure lspkind for vs-code like pictograms in completion menu
