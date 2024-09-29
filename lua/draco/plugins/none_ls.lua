@@ -1,24 +1,27 @@
 return {
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-        "nvimtools/none-ls-extras.nvim",
-    },
-    config = function()
-        -- get access to the none-ls functions
-        local null_ls = require("null-ls")
-        -- run the setup function for none-ls to setup our different formatters
-        null_ls.setup({
-            sources = {
-                -- setup lua formatter
-                null_ls.builtins.formatting.stylua,
-                -- setup eslint linter for javascript
-                require("none-ls.diagnostics.eslint_d"),
-                -- setup prettier to format languages that are not lua
-                null_ls.builtins.formatting.prettier
-            }
-        })
+	"mfussenegger/nvim-lint",
+	event = {
+		"BufReadPre",
+		"BufNewFile",
+	},
+	config = function ()
+		local lint = require("lint")
+		lint.linters_by_tf = {
+			javascript = {"eslint_d"},
+			typescript = {"eslint_d"},
+			svelte = {"eslint_d"}
+		}
+		local lint_au_group = vim.api.nvim_create_augroup("lint", {clear = true})
 
-        -- set up a vim motion for <Space> + c + f to automatically format our code based on which langauge server is active
-        vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "[C]ode [F]ormat" })
-    end
+		vim.api.nvim_create_autocmd({"BufEnter","BufWritePost", "InsertLeave"}, {
+			group = lint_au_group,
+			callback = function ()
+				lint.try_lint()
+			end
+		})
+		
+		vim.keymap.set("n", "<leader>ll",function ()
+			lint.try_lint()
+		end, { desc = "trigger linting for current file"})
+	end
 }

@@ -21,9 +21,7 @@ keymap.set('n', '<C-S>' ,':w<CR>')
 keymap.set('i', '<C-S>' ,'<ESC>:w<CR>i')
 
 -- Undo operations
-keymap.set('', 'l', 'u')
-keymap.set('', 'L', 'U')
-keymap.set('', '<C-L>', '<C-R>')
+keymap.set('', '<C-U>', '<C-R>')
 
 -- Insert Key
 keymap.set('', 'k', 'i')
@@ -56,6 +54,9 @@ keymap.set('i', '<c-y>', '<ESC>A {}<ESC>i<CR><ESC>ko')
 keymap.set('n', 'u', 'o')
 keymap.set('n', 'U', 'O')
 
+
+keymap.set('n', 'l', 'u')
+keymap.set('n', 'L', 'U')
 
 -- ==================== Cursor Movement ====================
 -- New cursor movement (the default arrow keys are used for resizing windows)
